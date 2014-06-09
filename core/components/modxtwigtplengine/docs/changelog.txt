@@ -1,0 +1,6 @@
+modxTwigTplEngine-0.0.1-beta
+=============================================================
+1. Created core
+2. Created plugin Twig initialization and clearing cache
+3. Created Debug mode
+4. Add base extensions

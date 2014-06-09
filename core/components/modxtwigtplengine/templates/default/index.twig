@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Example Index</h1>
+    
+    {{ "now"|date("m/d/Y") }}<br />
+    {{ modx.resource.content }}<br />
+    {{ "now"|date("m/d/Y") }}
+{% endblock %}

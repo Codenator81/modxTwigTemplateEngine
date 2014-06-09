@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        {% block head %}{% endblock %}
+        <base href="{{ modx.Option('site_url') }}" />
+    </head>
+    <body>
+	    {# example how call snipped with params
+	    {{ snippet('Wayfinder', {'startId':0}) }}  
+	    #}
+	    {% block content %}{% endblock %}
+    </body>
+</html>
