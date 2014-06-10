@@ -5,7 +5,7 @@ $plugins = array();
 
 $plugin = $modx->newObject('modPlugin');
 $plugin->set('id', null);
-$plugin->set('name', 'modxSmarty');
+$plugin->set('name', 'modxTwigTplEngine');
 $plugin->set('description', 'Base plugin for modxTwigTplEngine');
 $plugin->set('plugincode', getSnippetContent($sources['source_core'].'/elements/plugins/modxtwigtplengine.plugin.php'));
 
