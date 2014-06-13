@@ -41,7 +41,9 @@ class Plugins_Twig_Extension extends Twig_Extension
             new Twig_SimpleFunction('config', function ($name, $default = null) {
                 global $modx;
                 return $modx->getOption($name, $default);
-            }),  
+            }),
+            // {{ link(2) }}
+            // {{ link(2,{'name':'Codenator'}) }}
             new Twig_SimpleFunction('link', function ($id, $args=array()) {
                 global $modx;
                 $context='';
@@ -49,6 +51,7 @@ class Plugins_Twig_Extension extends Twig_Extension
                 $options = array();
                 return $modx->makeUrl($id, $context,$args,$scheme, $options);
             }),
+            // {{ field({'name':'createdon'})}}
             new Twig_SimpleFunction('field', function ($params = array()) {
                 global $modx;
                 if (!isset($params['name']) OR !$tagName = $params['name']) {
@@ -72,6 +75,16 @@ class Plugins_Twig_Extension extends Twig_Extension
                     $element->setCacheable($cacheable);
                     $output = $element->process($tagPropString);
                 }
+                return $output;
+            }),
+            //{{ trans('key','lang:namespace:topic',{'sport':'basketball'}) }}
+            new Twig_SimpleFunction('trans', function ($name, $topicname, $placeholders = []) {
+                global $modx;
+                if(mb_strlen($name)<2)return;
+                if(mb_strlen($topicname)>0) (string)$topicname;
+                $modx->getService('lexicon','modLexicon');
+                $modx->lexicon->load($topicname);
+                $output = $modx->lexicon($name,$placeholders);
                 return $output;
             }),
         );
