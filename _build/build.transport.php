@@ -16,7 +16,7 @@ define('NAMESPACE_NAME', PKG_NAME_LOWER);
 define('PKG_PATH', PKG_NAME_LOWER);
 define('PKG_CATEGORY', PKG_NAME);
 
-$pkg_version = '0.0.10';
+$pkg_version = '0.0.2';
 $pkg_release = 'beta';
 define('PKG_VERSION', $pkg_version); 
 define('PKG_RELEASE', $pkg_release); 
@@ -109,7 +109,7 @@ else{
 unset($plugins,$plugin,$attributes);
 
 
-/* load system settings */
+
 $settings = include_once $sources['data'].'transport.settings.php';
 $attributes= array(
     xPDOTransport::UNIQUE_KEY => 'key',
@@ -137,13 +137,20 @@ $vehicle->resolve('file',array(
     'target' => "return MODX_ASSETS_PATH . 'components/';",
 ));
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in AssetsPath'); flush();
- 
+
+$vehicle->resolve('php',array(
+    'source' => $sources['resolvers'] . 'resolve.install.php',
+));
 
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in resolvers.'); 
 
 flush();
 
 $builder->putVehicle($vehicle);
+
+
+
+
 
 /* now pack in the license file, readme and setup options */
 $builder->setPackageAttributes(array(

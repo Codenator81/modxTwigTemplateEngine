@@ -28,6 +28,7 @@
 global  $modx, $sources;
 $settings = array();
 
+
 $settings['modxTwigTplEngine.template_dir'] = $modx->newObject('modSystemSetting');
 $settings['modxTwigTplEngine.template_dir']->fromArray(array(
     'key' => 'modxTwigTplEngine.template_dir',

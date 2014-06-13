@@ -1,3 +1,10 @@
+modxTwigTplEngine-0.0.2-beta
+=============================================================
+
+Add trans for lexicon integration
+Install pluggin phpTemplates with Twig.
+
+
 modxTwigTplEngine-0.0.1-beta
 =============================================================
 1. Created core

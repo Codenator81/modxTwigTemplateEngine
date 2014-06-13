@@ -1,4 +1,3 @@
----WARNING Require phpTemplate!!! ----
 Thanks Fi1osof for amazing Smarty plugin.
 This plugin made on base his modxSmarty plugin.
 
@@ -76,5 +75,10 @@ with params
 
 field work with tv as well
 
+Translation (Lexicon)
 =================================================
+minimum call
+{{ trans('key','lang:namespace:topic') }}
+
+{{ trans('key','lang:namespace:topic',{'key':'value_for_placeholder'}) }}
 
