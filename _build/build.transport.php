@@ -134,7 +134,6 @@ $vehicle->resolve('file',array(
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in CorePath'); flush();
 
 
-$modx->log(modX::LOG_LEVEL_INFO,'Packaged in resolvers.'); 
 
 flush();
 
