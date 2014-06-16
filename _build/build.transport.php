@@ -6,7 +6,7 @@ $mtime= explode(" ", $mtime);
 $mtime= $mtime[1] + $mtime[0];
 $tstart = $mtime;
 
-$pkg_name = 'modxTwigTplEngine';
+$pkg_name = 'modxTwig';
 
 /* define package */
 define('PKG_NAME', $pkg_name);
@@ -132,15 +132,7 @@ $vehicle->resolve('file',array(
     'target' => "return MODX_CORE_PATH . 'components/';",
 ));
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in CorePath'); flush();
-$vehicle->resolve('file',array(
-    'source' => $sources['source_assets'],
-    'target' => "return MODX_ASSETS_PATH . 'components/';",
-));
-$modx->log(modX::LOG_LEVEL_INFO,'Packaged in AssetsPath'); flush();
 
-$vehicle->resolve('php',array(
-    'source' => $sources['resolvers'] . 'resolve.install.php',
-));
 
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in resolvers.'); 
 

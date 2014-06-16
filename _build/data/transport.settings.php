@@ -29,51 +29,32 @@ global  $modx, $sources;
 $settings = array();
 
 
-$settings['modxTwigTplEngine.template_dir'] = $modx->newObject('modSystemSetting');
-$settings['modxTwigTplEngine.template_dir']->fromArray(array(
-    'key' => 'modxTwigTplEngine.template_dir',
-    'value' => '{core_path}components/modxtwigtplengine/templates/',
+$settings['modxTwig.template_dir'] = $modx->newObject('modSystemSetting');
+$settings['modxTwig.template_dir']->fromArray(array(
+    'key' => 'modxTwig.template_dir',
+    'value' => '{core_path}components/modxtwig/templates/',
     'xtype' => 'textfield',
-    'namespace' => 'modxtwigtplengine',
+    'namespace' => 'modxtwig',
     'area' => 'site',
 ),'',true,true);
 
 
-$settings['modxTwigTplEngine.template'] = $modx->newObject('modSystemSetting');
-$settings['modxTwigTplEngine.template']->fromArray(array(
-    'key' => 'modxTwigTplEngine.template',
-    'value' => 'default',
-    'xtype' => 'textfield',
-    'namespace' => 'modxtwigtplengine',
-    'area' => 'site',
-),'',true,true);
-
-
-$settings['modxTwigTplEngine.cache'] = $modx->newObject('modSystemSetting');
-$settings['modxTwigTplEngine.cache']->fromArray(array(
-    'key' => 'modxTwigTplEngine.cache',
+$settings['modxTwig.cache'] = $modx->newObject('modSystemSetting');
+$settings['modxTwig.cache']->fromArray(array(
+    'key' => 'modxTwig.cache',
     'value' => '0',
     'xtype' => 'combo-boolean',
-    'namespace' => 'modxtwigtplengine',
+    'namespace' => 'modxtwig',
     'area' => 'site',
 ),'',true,true);
 
 
-$settings['modxTwigTplEngine.cache_dir'] = $modx->newObject('modSystemSetting');
-$settings['modxTwigTplEngine.cache_dir']->fromArray(array(
-    'key' => 'modxTwigTplEngine.cache_dir',
-    'value' => '{core_path}cache/modxtwigtplengine/',
-    'xtype' => 'textfield',
-    'namespace' => 'modxtwigtplengine',
-    'area' => 'site',
-),'',true,true);
-
-$settings['modxTwigTplEngine.debug'] = $modx->newObject('modSystemSetting');
-$settings['modxTwigTplEngine.debug']->fromArray(array(
-    'key' => 'modxTwigTplEngine.debug',
+$settings['modxTwig.debug'] = $modx->newObject('modSystemSetting');
+$settings['modxTwig.debug']->fromArray(array(
+    'key' => 'modxTwig.debug',
     'value' => '0',
     'xtype' => 'combo-boolean',
-    'namespace' => 'modxtwigtplengine',
+    'namespace' => 'modxtwig',
     'area' => 'site',
 ),'',true,true);
 
