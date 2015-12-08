@@ -16,22 +16,25 @@ define('NAMESPACE_NAME', PKG_NAME_LOWER);
 define('PKG_PATH', PKG_NAME_LOWER);
 define('PKG_CATEGORY', PKG_NAME);
 
-$pkg_version = '0.0.2';
-$pkg_release = 'beta';
-define('PKG_VERSION', $pkg_version); 
-define('PKG_RELEASE', $pkg_release); 
+$pkg_version = '0.0.4';
+$pkg_release = 'PL';
+define('PKG_VERSION', $pkg_version);
+define('PKG_RELEASE', $pkg_release);
 
 print '<pre>';
 require_once dirname(__FILE__). '/build.config.php';
-
+if (!defined('MODX_CORE_PATH'))
+    define('MODX_CORE_PATH', dirname(dirname(__FILE__)) . '/core/');
+if (!defined('MODX_CONFIG_KEY'))
+    define('MODX_CONFIG_KEY', 'config');
+require_once (MODX_CORE_PATH . 'model/modx/modx.class.php');
 
 $modx= new modX();
 $modx->initialize('mgr');
 
-
+use xPDO\Transport\xPDOTransport;
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO'); echo '<pre>'; flush();
-
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
@@ -39,7 +42,8 @@ $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.P
 $modx->getService('lexicon','modLexicon');
 $modx->lexicon->load(PKG_NAME_LOWER.':properties');
 //print "dsdfsdf".$modx->context->key;
-//exit; 
+//exit;
+
 
 /* load action/menu */
 $attributes = array (
@@ -54,7 +58,7 @@ $attributes = array (
             xPDOTransport::UNIQUE_KEY => array ('namespace','controller'),
         ),
     ),
-); 
+);
 
 
 /* add namespace */
@@ -69,13 +73,13 @@ $vehicle = $builder->createVehicle($namespace,array(
 $builder->putVehicle($vehicle);
 $modx->log(modX::LOG_LEVEL_INFO,"Packaged in ".NAMESPACE_NAME." namespace."); flush();
 unset($vehicle,$namespace);
- 
+
 /* create category */
 $category= $modx->newObject('modCategory');
 $category->set('id',1);
 $category->set('category',PKG_NAME);
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in category.'); flush();
-  
+
 
 /* create category vehicle */
 $attr = array(
@@ -100,7 +104,7 @@ $attr = array(
 
 /* add plugins */
 $plugins = include $sources['data'].'transport.plugins.php';
-if (!is_array($plugins)) { $modx->log(modX::LOG_LEVEL_ERROR,'Adding plugins failed.'); } 
+if (!is_array($plugins)) { $modx->log(modX::LOG_LEVEL_ERROR,'Adding plugins failed.'); }
 else{
     $category->addMany($plugins);
     $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($plugins).' plugins.'); flush();
@@ -147,7 +151,7 @@ $builder->putVehicle($vehicle);
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
-    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'), 
+    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
 ));
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in package attributes.'); flush();
 
