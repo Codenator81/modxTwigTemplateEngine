@@ -1,7 +1,7 @@
 <?php
 /* define the MODX path constants necessary for core installation */
 define('MODX_CORE_PATH', dirname(dirname(__FILE__)) . '/core/');
-define('MODX_CONFIG_KEY', 'revo_3_x');
+define('MODX_CONFIG_KEY', 'config');
 
 $root = dirname(dirname(__FILE__)).'/';
 /*

@@ -16,7 +16,7 @@ define('NAMESPACE_NAME', PKG_NAME_LOWER);
 define('PKG_PATH', PKG_NAME_LOWER);
 define('PKG_CATEGORY', PKG_NAME);
 
-$pkg_version = '0.0.4';
+$pkg_version = '1.0.0';
 $pkg_release = 'PL';
 define('PKG_VERSION', $pkg_version);
 define('PKG_RELEASE', $pkg_release);
@@ -32,7 +32,6 @@ require_once (MODX_CORE_PATH . 'model/modx/modx.class.php');
 $modx= new modX();
 $modx->initialize('mgr');
 
-use xPDO\Transport\xPDOTransport;
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO'); echo '<pre>'; flush();
 $modx->loadClass('transport.modPackageBuilder','',false, true);
